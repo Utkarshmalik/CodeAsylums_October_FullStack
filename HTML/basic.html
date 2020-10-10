@@ -9,21 +9,127 @@
 
     <style>
 
+        /*
+
+        h1
+        {
+            background-color:tomato ;
+            color:green;
+        }
+
+        #idName
+        {
+            //IDS
+            
+        }
+
+        .className
+        {
+            
+            //CLASS
+        }
+
+        TagName.className{
+
+        }
+
+        h1.text{
+            
+            only those h1 elements with class as text
+        }
+
+        *
+        {
+
+        }
+
+        h1,h2,h3
+        {
+
+        }
+
+        */
+
+        /* 
         .text{
             color:red;
             background-color: black;
-        }
+        } */
+
+        /*
 
         #someId{
             color:black;
             background-color:red;
         }
+        */
+
+       img.someClass
+       {
+           vertical-align:bottom;
+       }
+
+       html
+       {
+           font-family: Arial, Helvetica, sans-serif;
+       }
+
+        .parent
+        {
+            color:#ff5656;
+            
+            border:10px  solid yellow;
+            border-width:20px 25px 20px 10px;
+            border-radius:7px;
+            border-color: red green pink black;
+            background-color:orange;
+            height:100vh;
+            background-repeat:no-repeat;
+            background-position:left top;
+            background-attachment:scroll;
+            font-size:50px;
+
+            /*
+
+            It horizontally centres the elemnt within its container
+
+            */
+
+        }
 
 
+         .child
+        {
+            color:black;
+            height:300px;
+            border:5px solid firebrick;
+            outline:2px solid greenyellow;
+            outline-offset:15px;
+            text-align:justify;
+            vertical-align:top;
+            font-size:1rem;
+        } 
+
+        
+        h4
+        {
+            text-decoration:line-through;
+            text-transform: lowercase;
+            letter-spacing:3px;
+            line-height:0.9;
+            border:2px solid pink;
+            text-shadow: 2px 2px yellow;
+            font-style:italic;
+            font-weight:bolder;
+        }
+
+        .grandparent
+        {
+            padding:20px;
+            border:2px solid rebeccapurple;
+        }
+         
     </style>
-
-
-
 </head>
 
 <body>
@@ -131,7 +237,6 @@
         <li>banana</li>
         <li>KIWI</li>
     </ul>
-
 
     <ol>
             <li>Apple</li>
@@ -252,17 +357,19 @@
         <input type="submit" value="submit Form"  />
     </form> -->
 
-    <!-- HTML Geolocation API  -->
 
-    <h1 class="text" >
-        HTML Classes
-    </h1>
+    <div class="grandparent"> 
+    <div class="parent" >
+        <div class="child">
+        <h4 >HTML Classes </h4>
+        </div>
+    <p  > This is some image 
+        <img height="300px" width="300px" class="someClass" src="../../../BAWA/Clients//prachi_final.png"/>
+    </p>
+    </div>
+    </div>
 
-    <video width="400px" height="500px" controls >
-
-        <source src="video.mp4" type="video/mp4">
-
-    </video>
+   
 
 
 </body>
