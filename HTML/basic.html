@@ -83,11 +83,12 @@
             border-radius:7px;
             border-color: red green pink black;
             background-color:orange;
-            height:100vh;
+            height:500vh;
             background-repeat:no-repeat;
             background-position:left top;
             background-attachment:scroll;
             font-size:50px;
+
 
             /*
 
@@ -101,13 +102,17 @@
          .child
         {
             color:black;
-            height:300px;
+            /* height:300px; */
             border:5px solid firebrick;
             outline:2px solid greenyellow;
             outline-offset:15px;
             text-align:justify;
-            vertical-align:top;
+            /* vertical-align:top; */
             font-size:1rem;
+            display: block;
+            margin: auto;
+
+            
         } 
 
         
@@ -121,6 +126,8 @@
             text-shadow: 2px 2px yellow;
             font-style:italic;
             font-weight:bolder;
+
+            
         }
 
         .grandparent
@@ -128,12 +135,105 @@
             padding:20px;
             border:2px solid rebeccapurple;
         }
-         
+
+        /*
+
+        Descendant selector
+        */
+/* 
+        .child p
+        {
+            background-color:red;
+        } */
+
+          /*
+
+        Child selector
+        */
+
+        /* div > p
+        {
+            background-color:red;
+        }
+     */
+/* 
+     .grandparent p
+     {
+         background-color:red;
+     } */
+
+
+/* 
+     .grandparent > p
+     {
+         background-color:red;
+     } */
+
+
+     /*
+     adjacent sibling selector  => + 
+     */
+
+     /* div + p
+     {
+         background-color:yellow;
+     } */
+
+
+     /*
+
+     general Sibling : ~ 
+
+     */
+
+     a:link
+     {
+         color:red;
+         background-color:pink;
+     }
+
+     a:visited{
+         color:green;
+         background-color:red;
+     }
+
+     a:hover
+     {
+         background-color:rebeccapurple;
+     }
+
+     a:active{
+         color:yellow;
+         background-color:black;
+     }
+     
+     
+     /* p:first-child{
+       
+        color:firebrick;
+     } */
+
+     p::first-line{
+         color:green;
+         background: black;
+     }
+     p::first-letter{
+         font-size:100px;
+     }
+
+     h4::after{
+         content: url(../../../BAWA//Clients/slh.jpeg);
+         opacity:0.5; 
+        }
+
+
+
+
     </style>
 </head>
 
 <body>
-    <!-- <h1 id="someId">HTML</h1>
+     <!-- <h1 id="someId">HTML</h1>
     <h2>HTML</h2>
     <h3>HTML</h3>
     <h4>HTML</h4>
@@ -254,9 +354,8 @@
         <dt>Nodejs</dt>
         <dd> - Sever Side Language</dd>
     </dl>
- -->
 
-<!-- 
+
     <form action="" method="POST" >
         <label >Name : </label>
 
@@ -356,17 +455,52 @@
 
         <input type="submit" value="submit Form"  />
     </form> -->
+    <p > This is some image  </p>
+    <p > This is some image  </p>
 
 
-    <div class="grandparent"> 
+    <div class="grandparent">        
+        <p > This is some image  </p>
+        <p > This is some image  </p>
+
+        <a href="https://www.cricbuefezz.com">cricbuzz </a>
+
     <div class="parent" >
+        <p > This is some image  </p>
+        <p > This is some image  </p>
+        <p > This is some image  </p>
+
         <div class="child">
+
+            <p > This is some image  </p>
+            <p > This is some image  </p>
+            <p > This is some image  </p>
+
+            <a href="https://www.fkwefeacebook.com"> Move to facebook </a>
+            <a href="https://www.gowlmcfkwmcklwmlwkwogle.com"> Move to facebook </a>
+            <br/>
+
+
         <h4 >HTML Classes </h4>
-        </div>
-    <p  > This is some image 
+        <p > This is some image  </p>
         <img height="300px" width="300px" class="someClass" src="../../../BAWA/Clients//prachi_final.png"/>
-    </p>
+
+</div>
     </div>
+    <div>
+    <p > This is some image This is some imageThis is some imageThis is some imageThis is some imageThis is some imageThis is some imageThis is some imageThis is some image 
+        This is some imageThis is some imageThis is some imageThis is some imageThis is some imageThis is some imageThis is some imageThis is some image,This is some image,
+        This is some imageThis is some imageThis is some image
+,This is some image </p>
+    <p > This is some image  </p>
+    <p > This is some image  </p>
+    <p > This is some image  </p>
+    <p > This is some image  </p>
+    <p > This is some image  </p>
+    </div>
+
+    
+
     </div>
 
    
