@@ -25,10 +25,41 @@
 
 </style>
 
+<script defer type="text/JavaScript" src="temp.js" > </script>
+<script defer type="text/JavaScript" src="temp.js" > </script>
+<script defer type="text/JavaScript" src="temp.js" > </script>
+<script defer type="text/JavaScript" src="temp.js" > </script>
+<script async type="text/JavaScript" src="temp.js" > </script>
+<script async type="text/JavaScript" src="temp.js" > </script>
+<script defer type="text/JavaScript" src="temp.js" > </script>
+<script async type="text/JavaScript" src="temp.js" > </script>
+<script defer type="text/JavaScript" src="temp.js" > </script>
+<script async type="text/JavaScript" src="temp.js" > </script>
+
 </head>
 
 <body>   
   
-<script type="text/JavaScript" src="temp.js" > </script>
+
+
+
 </body>
 </html>
+
+<!--
+
+  HTML parsing (1), script loading(2) , scritpt executing(3) 
+
+  =>normally in head=> 2 , 3, 1
+  =>end of body =>     1,2,3
+
+
+  aync => HTML parsing
+          Scriptloading -> Script Executes
+                                                    ->HTML parsing continues 
+
+  defer =>  HTML Parsing  
+           ScriptLoading 
+                         scriptisexecuted
+
+-->

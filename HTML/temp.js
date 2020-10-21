@@ -1,4 +1,4 @@
-
+'use strict'
 
 
 //var const and let => 
@@ -9,18 +9,19 @@
 //         of their scope before code executes
 
 
+
+
 // console.log(someName);
-// var somename="utkarsh";
+// var someName="utkarsh";
+
+
+// var undefined="true";
 
 
 
 
 // console.log(someName);
 // let someName="utkarsh";
-
-
-
-
 
 
 
@@ -334,13 +335,79 @@
 
 
 
-console.log(name1);   //undefined
+// console.log(name1);   //undefined
 
-if(true)
-{
-    console.log(name1);  //undefined
-    const name1="utkarsh";
-}
+// if(true)
+// {
+//     console.log(name1);  //undefined
+//     const name1="utkarsh";
+// }
+
+
+
+// 1)Numbers
+// 2)Strings
+// 3)Objects
+// 4)Boolean 
+// 5) null
+// 6) undefined
+
+
+
+
+
+//stacks 
+//heaps
+//heaps=> for storing / memory allocation
+
+
+
+
+// let  a={name:"Utkarsh",age:25};
+// let b={...a};
+
+// if(a==b)
+// {
+
+// } 
+
+// if(a===b)
+// {
+
+// }
+
+// a.name="Rahul";
+
+// console.log(a);
+// console.log(b);
+
+
+// const a=[];
+// a.push(1);
+// console.log(a);
+
+
+
+//null vs undefined
+
+//undefined means absenece of defination 
+//null means 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
