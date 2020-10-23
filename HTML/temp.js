@@ -396,6 +396,41 @@
 
 
 
+//Functions
+
+// function fun1(...numbers) {
+
+//     console.log(numbers);
+
+//     let sum=0;
+
+//     for(const num of numbers)
+//     {
+//         sum+=num;
+//     }
+
+//     console.log(sum);
+// }
+
+
+// fun1(1,2,3,4,5,4,3);
+// fun1(1,2,3);
+// fun1(5,6,4,3,2,3,4,5,5,4,3);
+// fun1(1);
+
+
+//Rest operator
+console.log(global);
+
+
+
+
+
+
+
+
+
+
 
 
 
