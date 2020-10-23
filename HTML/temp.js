@@ -420,22 +420,52 @@
 
 
 //Rest operator
-console.log(global);
 
 
+//DOM Manipulation
 
 
+// const testId=document.getElementById("test");
+// testId.style.backgroundColor='red';
+
+// const testClass=document.getElementsByClassName("test");
 
 
+// for(let i=0;i<testClass.length;i++)
+// {
+//     testClass[i].style.backgroundColor="pink";
+// }
+
+//  const testTag=document.getElementsByTagName('section');
 
 
+//  for(let i=0;i<testTag.length;i++)
+// {
+//     testTag[i].style.backgroundColor="orange";
+// }
+
+// const testQuery=document.querySelectorAll(".test");
+
+// const testQuery1=document.querySelector("#test");
+// testQuery1.style.backgroundColor="grey";
 
 
+const h1=document.getElementsByTagName('h1')[0];
+const p=document.getElementsByTagName('p')[0];
+const ul=document.getElementsByTagName('ul')[0];
+
+console.log(ul.childNodes);
+
+ul.firstElementChild.style.backgroundColor="red";
+
+console.dir(ul);
+console.dir(ul.children);
 
 
-
-
-
+for(let element of ul.children)
+{
+    element.style.backgroundColor="yellow";
+}
 
 
 
