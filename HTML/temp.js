@@ -449,23 +449,114 @@
 // const testQuery1=document.querySelector("#test");
 // testQuery1.style.backgroundColor="grey";
 
+// console.log(document.head);
+// console.log(document.body);
+
+// const h2=document.getElementById('h1');
+// console.log(h2.firstChild.nodeValue);
+// console.log(h2.firstChild.nodeName);
+// console.log(h2.nodeType);
+// console.log(h2.nodeValue);
+
 
 const h1=document.getElementsByTagName('h1')[0];
 const p=document.getElementsByTagName('p')[0];
 const ul=document.getElementsByTagName('ul')[0];
 
-console.log(ul.childNodes);
+//Each node of a dom has multiple properties associated with it
 
-ul.firstElementChild.style.backgroundColor="red";
+//nodeType
+//nodeValue
+//nodeName
 
-console.dir(ul);
-console.dir(ul.children);
+// console.log(ul.parentNode);
+// console.log(ul.childNodes[0].nodeType);
+// console.log(ul.children[0].nodeType);
+
+console.log(ul.parentNode);
+console.log(ul.childNodes[0].nodeValue);
+console.log(ul.children[0].nodeType);
+
+//childNodes vs children
 
 
-for(let element of ul.children)
-{
-    element.style.backgroundColor="yellow";
+// console.log(ul.firstChild);         //text
+// console.log(ul.firstElementChild);  //li
+
+
+// console.log(ul.lastChild);          //text
+// console.log(ul.lastElementChild);   //li
+
+
+//nextSibling vs nextElementSibling
+
+// console.log(ul.firstChild.nextElementSibling.previousSibling.nodeType);
+// console.log(ul.nextElementSibling);
+// console.log(ul.previousElementSibling.previousElementSibling);
+
+
+
+// console.log(ul.firstElementChild.nodeType);
+//  console.log(ul.childNodes);
+//  console.log(ul.children);
+
+//  console.log(ul.childNodes[1].nodeType);
+//  console.log(ul.firstChild.nodeValue);
+
+
+
+// ul.firstElementChild.style.backgroundColor="red";
+
+// console.dir(ul);
+// console.dir(ul.children);
+
+
+// for(let element of ul.children)
+// {
+//     element.style.backgroundColor="yellow";
+// }
+
+
+const newList=document.createElement('li');
+newList.textContent="express JS";
+
+// ul.insertBefore(newList,ul.firstElementChild.nextElementSibling.nextElementSibling);
+
+ul.children[1].insertAdjacentElement("afterend",newList);
+
+
+//beforebegin
+//afterbegin
+//beforeend
+//afterend
+
+
+// ul.replaceChild(newList,ul.children[1]);
+// ul.removeChild(ul.children[2]);
+
+
+
+//Changing the style 
+
+
+//doing inline styling
+
+ul.firstElementChild.nextElementSibling.style.backgroundColor="red";
+
+for(let i=0;i<ul.children.length;i++)
+{ul.children[i].style.fontSize=3*i+10;
 }
+
+ul.classList.add("temp");
+ul.classList.add("temp2");
+
+ul.classList.remove("temp2");
+
+
+
+
+
+
 
 
 
