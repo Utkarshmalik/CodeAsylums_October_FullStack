@@ -517,12 +517,12 @@ console.log(ul.children[0].nodeType);
 // }
 
 
-const newList=document.createElement('li');
-newList.textContent="express JS";
+// const newList=document.createElement('li');
+// newList.textContent="express JS";
 
-// ul.insertBefore(newList,ul.firstElementChild.nextElementSibling.nextElementSibling);
+// // ul.insertBefore(newList,ul.firstElementChild.nextElementSibling.nextElementSibling);
 
-ul.children[1].insertAdjacentElement("afterend",newList);
+// ul.children[1].insertAdjacentElement("afterend",newList);
 
 
 //beforebegin
@@ -535,22 +535,21 @@ ul.children[1].insertAdjacentElement("afterend",newList);
 // ul.removeChild(ul.children[2]);
 
 
-
 //Changing the style 
 
 
 //doing inline styling
 
-ul.firstElementChild.nextElementSibling.style.backgroundColor="red";
+// ul.firstElementChild.nextElementSibling.style.backgroundColor="red";
 
-for(let i=0;i<ul.children.length;i++)
-{ul.children[i].style.fontSize=3*i+10;
-}
+// for(let i=0;i<ul.children.length;i++)
+// {ul.children[i].style.fontSize=3*i+10;
+// }
 
-ul.classList.add("temp");
-ul.classList.add("temp2");
+// ul.classList.add("temp");
+// ul.classList.add("temp2");
 
-ul.classList.remove("temp2");
+// ul.classList.remove("temp2");
 
 
 
