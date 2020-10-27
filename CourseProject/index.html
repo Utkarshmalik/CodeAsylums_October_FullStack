@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <title>
+            Course Web App
+        </title>
+
+        <script defer src="main.js"></script>
+    </head>
+
+    <body>
+
+        <div id="backdrop"></div>
+
+        <header>
+                <h1>Course Manager App</h1>
+                <button id="addCourseButton">Add Course</button>
+        
+        </header>
+
+
+        <div class="modal" id="course_modal" >
+
+            <div model_content>
+            <h1>Add New Course</h1>
+            </div>
+
+            <div id="modal_inputs">
+
+                <div class="align" >
+                <label>Course Name</label>
+                <input type="text" />
+                </div>
+
+                <div class="align">
+                <label>Course Image URL</label>
+                <input type="text" />
+            </div>
+        
+        
+                <div class="align">
+              <label>Course Ratings</label>
+                <input type="number" />
+                </div>
+
+
+            </div>
+
+            <div id="modal_controls">
+
+            <button class="btn btn-passive" >cancel</button>
+            <button class="btn btn-danger" >Add Course </button>
+
+        </div>
+            </div>
+
+        <main>
+            <div class=" card">
+            <h2> My List of courses </h2>
+            </div>
+
+            <ul>
+            </ul>
+        </main>
+
+    </body>
+
+</html>
+
+
