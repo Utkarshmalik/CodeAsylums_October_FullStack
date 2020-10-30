@@ -50,8 +50,7 @@ function  renderNewCourse(newCourse) {
     const newLi=document.createElement("ol");
 
     const {id,courseName,courseImage,courseRatings}=newCourse;
-
-
+    
     newLi.addEventListener("click",()=>
     {
         let indexValue=null;
@@ -66,7 +65,7 @@ function  renderNewCourse(newCourse) {
         }
 
         console.log(allCourseList);
-        
+
         allCourseList.splice(indexValue,1);
 
         courseList.children[indexValue].remove();
