@@ -154,3 +154,214 @@
 
 
 
+//Objects 
+
+
+//7 Types
+// Number
+// Strings
+// Boolean
+// null   
+// undefined
+// symbol  //es6 
+// object : reference
+
+
+// const obj={title:'Objects'};
+
+// const firstName="utkarsh";
+// const lastName="Malik";
+
+
+
+
+
+// const course={};
+
+// //ratings //stars //viewers //enrollments  //title  //rewards
+
+// const input1Key="viewers"; 
+// const input1Value=5;
+
+// const input2Key="ratings";
+// const input2Value=8;
+
+// const input3Key="enrollments";
+// const input3Value=10000;
+
+// course[input1Key]=input1Value;
+
+// course[input2Key]=input2Value;
+
+// course[input3Key]=input3Value;
+
+
+// console.log(course);
+
+// course:{viewers:5,ratings:8}
+
+
+
+
+// const obj={name:"scsc",age:"cdcd",frfrfL:"cdc"};
+// obj.height=180;
+
+
+// //order is sorted on the basis of key
+
+// const obj2={3:"name",1:"ddede",4:"dede",0:"ddce"};
+// console.log(obj2);
+
+// const obj={info:{name:"Utkarsh"},"age":[{key:"cdc"}]};
+
+// //spread operator 
+
+// const obj2={...obj};
+// obj2.info={...obj.info};
+
+// for(let i=0;i<obj.age.length;i++)
+//   obj2.age[i]={...obj.age[i]};
+
+
+// console.log(obj);
+// obj.info.name="Rahul";
+// obj.age.push(5);
+// console.log(obj2);
+
+// const obj2=Object.assign(obj);
+
+// console.log(obj);
+// obj.info.name="Rahul";
+// obj.age.push(5);
+// console.log(obj2);
+
+
+const obj={height:25,info:{name:"Utkarsh"},"age":[{key:"cdc"}]};
+
+// const height=obj.height;
+// const info=obj.info;
+// const name=info.name;
+// const age=obj.age;
+
+//destructing in objects 
+
+// const {height,info}=obj;
+// const {name}=info;
+
+// console.log(height,name);
+
+
+//destructing in arrays
+
+
+// const arr1=[{name:"Utkars"},{name:'dcdede'}];
+
+// const [person1,person2]=arr1;
+
+// console.log(person1);
+// console.log(person2);
+
+
+
+//this keyword
+
+
+//lexical environment
+//execution context 
+//scope chains
+
+// const course={
+
+//     name:"JS",
+
+//     addCourse:function () {
+//         var name='JS'
+//         console.log(name);
+//     }
+// };
+
+// course.addCourse();
+
+
+//execution context :environment in which the code is executed
+//value => this ,variables,objects,functions
+
+
+
+
+
+// var someFunction=function() {
+//     console.log(this);
+// }
+
+// 
+
+
+// someFunction();
+
+
+
+//This at object literals
+
+
+
+// var someObj={};
+
+// someObj.someMethod= function () {
+//     console.log(this);
+//  }
+
+// someObj.someMethod();
+
+
+
+// var fruit="apple";
+
+// function getFruit(params) {
+//     var fruit="banana";
+//     console.log(fruit);        // banana
+//     console.log(this);         //window
+//     console.log(this.fruit);   //apple
+// }
+
+// getFruit();
+
+// var name="Ut";
+// var color="red";
+
+// function getPerson() {
+//     console.log(this.name + this.color);
+// }
+
+// var person ={
+//     name:"Rahul",
+//     color:"green",
+//     getPerson:function getPerson() {
+//     var name="fefe";
+//     var color="yellow";
+//     console.log(this.name + this.color);
+//     }
+// }
+
+// getPerson()
+// person.getPerson();
+
+
+// this :points to the object , which the calling 
+//function/method belongs to 
+
+var person=[
+    {name:"Utkarsh",fun:function (params) {
+    console.log(this);
+}}
+];
+
+person[0].fun();
+
+
+
+
+
+
+
+
