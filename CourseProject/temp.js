@@ -1,6 +1,23 @@
 
+  const call = {
+    caller: "mom", 
+    anotherCaller: function() {
+          console.log(`${this.caller} called, too!`)
+        },
+    says: function() {
+      console.log(`Hey, ${this.caller} just called.`);
+    }
+  };
+  
+  let newCall = call.anotherCaller;
+  newCall();
+  
 
 
+
+
+  
+ 
 
 // arr.push(34.56);
 // console.log(arr);
@@ -236,7 +253,7 @@
 // console.log(obj2);
 
 
-const obj={height:25,info:{name:"Utkarsh"},"age":[{key:"cdc"}]};
+// const obj={height:25,info:{name:"Utkarsh"},"age":[{key:"cdc"}]};
 
 // const height=obj.height;
 // const info=obj.info;
@@ -350,18 +367,207 @@ const obj={height:25,info:{name:"Utkarsh"},"age":[{key:"cdc"}]};
 // this :points to the object , which the calling 
 //function/method belongs to 
 
-var person=[
-    {name:"Utkarsh",fun:function (params) {
-    console.log(this);
-}}
-];
+// var person=[
+//     {name:"Utkarsh",fun:function (params) {
+//     console.log(this);
+// }}
+// ];
+// person[0].fun();
 
-person[0].fun();
-
-
-
+//this has different meanings when used at different places 
 
 
 
 
+// const obj={
 
+//     name:"Utkarsh",
+//     calculaeBMI:()=>{
+//         const name="Rahul";
+//         console.log(name);
+//         console.log(this);
+//     }
+// }
+
+//static deals : with Where something was declared
+//dynamic deals : with How somwthing will run 
+
+
+// var fun=function() {
+//     console.log(this); 
+// }
+// fun();
+
+
+
+//this in object methods
+
+
+// var obj={};
+
+// obj.fun=function(){
+   
+//     return function () {
+//         console.log(this);
+//     }
+// }
+
+// const fun2=obj.fun();
+// fun2();
+
+
+//
+
+// this in prototypes and constructor functions
+
+
+// var myConstructor= function () {
+//     this.someMethod=function () {
+//         console.log(this);
+//     }
+// }
+
+// var a= new myConstructor();
+// a.someMethod();
+
+
+//this in events 
+
+// var element=document.querySelector("header");
+
+// function onButtonClick() {
+//     console.log(this);
+// }
+
+// element.addEventListener("click",onButtonClick);
+
+// this in arrow functions 
+
+
+// var obj={};
+
+// function fun(){
+//     console.log(this);
+// }
+
+// function fun2() {
+//     'use strict';
+//     console.log(this);
+// }
+
+// fun();
+// fun2();
+
+
+
+// var element=document.querySelector("header");
+
+//  onButtonClick=()=>{
+//     console.log(this);
+// }
+
+// element.addEventListener("click",onButtonClick);
+
+
+// bind vs call vs apply 
+
+
+
+// console.log(this);
+
+
+// var name="Utkarsh";
+
+
+// const person1={
+//     name:"Rahul"
+// }
+
+// const person2={
+//     name:"Rohit"
+// }
+
+// function tellMeAboutThePerson(age,height)
+// {
+
+//     console.log(this.name +age+height);
+// }
+// // tellMeAboutThePerson.call(person2,20,180);
+
+// // tellMeAboutThePerson.apply(this,[20,180]);
+
+// const newFun=tellMeAboutThePerson.bind(this,20,180);
+// newFun();
+
+
+
+
+
+
+
+
+
+
+// let hero = {
+//     powerLevel: 99,
+//     getPower(){
+//       return this.powerLevel;
+//     }
+//   }
+
+//   let getPower = hero.getPower;
+  
+//   let hero2 = {powerLevel:42};
+//   console.log(getPower()); 
+//   console.log(getPower.apply(hero2)); 
+  
+  
+  
+  // Code 2
+
+
+//   function fun ()
+//   {
+//   const a = function(){
+//     console.log(this); // window 
+  
+//     const b = {
+//       func1: function(){
+//         console.log(this); //b
+//       }  
+//     }
+  
+//     const c = {
+//       func2: ()=>{
+//         console.log(this); //c, window 
+//       }
+//     }
+  
+//     b.func1();
+//     c.func2();
+//   }
+  
+//   a();
+// }
+// fun();
+  
+  
+  
+
+  
+//   const b = {
+//     nameq:"Vivek",
+//     f: function(){
+//       var self = this;
+//       console.log(this.nameq); //vivek
+//       (function(){
+//         console.log(this.nameq); //undefined 
+//         console.log(self.nameq); //vivek,
+//       })();
+//     }
+//   }
+  
+//   b.f();
+
+// Questions:
+// Questio
