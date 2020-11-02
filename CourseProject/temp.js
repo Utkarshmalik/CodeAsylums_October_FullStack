@@ -1,17 +1,16 @@
 
-  const call = {
-    caller: "mom", 
-    anotherCaller: function() {
-          console.log(`${this.caller} called, too!`)
-        },
-    says: function() {
-      console.log(`Hey, ${this.caller} just called.`);
-    }
-  };
+//   const call = {
+//     caller: "mom", 
+//     anotherCaller: function() {
+//           console.log(`${this.caller} called, too!`)
+//         },
+//     says: function() {
+//       console.log(`Hey, ${this.caller} just called.`);
+//     }
+//   };
   
-  let newCall = call.anotherCaller;
-  newCall();
-  
+//   let newCall = call.anotherCaller;
+//   newCall();
 
 
 
