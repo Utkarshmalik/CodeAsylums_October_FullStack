@@ -1,66 +1,63 @@
-class course
+function course(name,author,date,ratings)
 {
-  constructor(name,author,date,ratings)
-  {
     this.name=name;
     this.author=author;
     this.date=date;
     this.ratings=ratings;
-  }
-
-  render()
-  {
-    let newCourse=document.createElement('li');
-    newCourse.innerHTML=`
-    <div style="text-align:center;border:3px solid blue">
-    <h1>${this.name}</h1>
-    <h2>${this.author}</h2>
-    <h3>${this.date}</h3>
-    <h4>${this.ratings}</h4>
-    ${(this.price)?this.price:""}
-    </div>
-    `
-    return newCourse;
-  }
-
 }
 
 
-class SpecialCourse extends course
-{
-  constructor(name,author,date,ratings,price)
-  {
-    super(name,author,date,ratings);
-    this.price=price;
-  }
+course.prototype.add=function() {
+  console.log("add"); 
 }
 
-class CourseList
+course.prototype.render=function()
 {
-   courses=[];
+  let newCourse=document.createElement('li');
+  newCourse.innerHTML=`
+  <div style="text-align:center;border:3px solid blue">
+  <h1>${this.name}</h1>
+  <h2>${this.author}</h2>
+  <h3>${this.date}</h3>
+  <h4>${this.ratings}</h4>
+  ${(this.price)?this.price:""}
+  </div>
+  `
+  return newCourse;
+}
 
-  constructor(courses)
-  {
-    this.courses=[...courses]
-  }
 
-  addCourse(course)
-  {
+
+function specialCourse(name,author,date,ratings,price) {
+
+  course.call(this,name,author,date,ratings);
+  this.price=price;
+}
+
+specialCourse.prototype=new course();
+specialCourse.prototype.constructor=specialCourse;
+
+
+
+const course1=new specialCourse("JS","Utkarsh","10/10/10",5,600);
+const course2=new course("JS","Utkarsh","10/10/10",5);
+console.log(course1);
+console.log(course2);
+
+
+function courseList(courses=[]) {
+
+  this.courses=[...courses]
+}
+
+courseList.prototype.addCourse=function(course)
+{
     this.courses.push(course);
-  }
+}
 
-  removeCourse(courseId)
-  {
-    this.courses=this.courses.filter((course)=>
-    {
-      return course.id!==courseId;
-    });
-  }
-
-  render()
-  {
-
-    let courseListUI=document.createElement('ol');
+courseList.prototype.render= function()
+{
+  let courseListUI=document.createElement('ol');
 
     console.log(this.courses);
 
@@ -71,30 +68,25 @@ class CourseList
     });
 
     return courseListUI;
-  }
 }
 
 
-class Application
-{
-  static init()
+function init()
   {
 
     const course1=new course("JS","Utkarsh","10/10/20",5);
     const course2=new course("React","Rahul","4/10/20",2);
-    const course3=new SpecialCourse("Nodejs","Rohit","3/10/20",4,500);
-
-
-     const courseList=new CourseList([course1,course2,course3]);
-     const courseListUI=courseList.render();
+    const course3=new specialCourse("Nodejs","Rohit","3/10/20",4,500);
+    const courseListNew=new courseList([course1,course2,course3]);
+     const courseListUI=courseListNew.render();
      console.log(courseListUI);
      const app=document.querySelector("#app");
      app.appendChild(courseListUI);
   }
 
-}
 
-Application.init();
+
+init();
 
 
 
