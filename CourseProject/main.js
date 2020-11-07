@@ -106,13 +106,77 @@
 //Event delegation
 
 
-const form=document.querySelector("#form");
+// const form=document.querySelector("#form");
 
-form.addEventListener("keyup",(e)=>
-{
-    if(e.target.dataset.uppercase !=undefined)
-    e.target.value=e.target.value.toUpperCase();
-})
+// form.addEventListener("keyup",(e)=>
+// {
+//     console.log(e.target.dataset);
+
+//     if(e.target.dataset.uppercase !=undefined)
+//     e.target.value=e.target.value.toUpperCase();
+// })
+
+
+//setimeout and setInterval
+
+// const id=setInterval(() => {
+
+//     console.log("Hii");
+// },2000);
+
+// const btn=document.querySelector("#someButton");
+
+// btn.addEventListener("click",()=>
+// {
+//     clearInterval(id);
+
+// })
+
+
+
+
+//Every function in jS is a Closure 
+
+
+function grandFather(params) {
+
+    const a=5;
+
+    return function father()
+    {
+        const b=6;
+
+        return function child(c)
+        {
+        return a+b+c;
+        }
+    }
+}
+
+
+
+//someday
+
+const father=grandFather();
+
+
+///1000 years 
+
+const child=father();
+
+
+///1000
+
+console.log(child(10));
+
+
+
+
+
+
+
+
+
 
 
 
