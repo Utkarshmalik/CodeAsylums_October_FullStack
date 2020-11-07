@@ -14,32 +14,44 @@
 //   button.removeEventListener("click",buttonHandler);
 // }
 
-// button.addEventListener("click",buttonHandler);
+// // button.addEventListener("click",buttonHandler);
 
 
-const box1=document.querySelector("#box1");
-const box2=document.querySelector("#box2");
-const box3=document.querySelector("#box3");
-
-
-
-
-box1.addEventListener("click",(event)=>
-{
-  console.log("I am box 1");
-},false);
-
-box2.addEventListener("click",(event)=>
-{
-  console.log("I am box 2");
-},true);
-
-
-box3.addEventListener("click",(event)=>
-{
-  console.log("I am box 3");
-},false);
+// const box1=document.querySelector("#box1");
+// const box2=document.querySelector("#box2");
+// const box3=document.querySelector("#box3");
 
 
 
 
+// box1.addEventListener("click",(event)=>
+// {
+//   console.log("I am box 1");
+// },false);
+
+// box2.addEventListener("click",(event)=>
+// {
+//   event.stopImmediatePropagation();
+//   //event.stopPropagation();
+//   console.log("I am box 2");
+// },false);
+
+// box2.addEventListener("click",(event)=>
+// {
+//   console.log("I am box 2 version2");
+// },false);
+// box3.addEventListener("click",(event)=>
+// {
+//   console.log("I am box 3");
+// },false);
+
+//event Delegation 
+
+
+
+
+//event bubbling vs event capturing 
+//IIFE
+//Closures
+//Asynchrounous JS : archtecture,callbacks,promises,async await 
+//HTTP Requests : 

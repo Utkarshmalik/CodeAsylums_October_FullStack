@@ -102,3 +102,18 @@
 
 // })
 
+
+//Event delegation
+
+
+const form=document.querySelector("#form");
+
+form.addEventListener("keyup",(e)=>
+{
+    if(e.target.dataset.uppercase !=undefined)
+    e.target.value=e.target.value.toUpperCase();
+})
+
+
+
+
