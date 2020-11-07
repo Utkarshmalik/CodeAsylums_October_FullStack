@@ -138,42 +138,51 @@
 //Every function in jS is a Closure 
 
 
-function grandFather(params) {
+// function grandFather(params) {
 
-    const a=5;
+//     const a=5;
 
-    return function father()
-    {
-        const b=6;
+//     return function father()
+//     {
+//         //a   
 
-        return function child(c)
-        {
-        return a+b+c;
-        }
-    }
+//         const b=6;
+
+//         return function child(c)
+//         {
+//             //a,b
+
+//         return a+b+c;
+//         }
+//     }
+// }
+
+
+
+// //someday
+
+// const father=grandFather();
+
+
+// ///1000 years 
+
+// const child=father();
+
+
+// ///1000
+
+// console.log(child(10));
+
+
+// //CLOSURE -> is a box that contains all the variables of lexical enviroment
+
+
+for(let i=0;i<5;i++)
+{
+    setTimeout(() => {
+        console.log(i);
+    }, 1000);    
 }
-
-
-
-//someday
-
-const father=grandFather();
-
-
-///1000 years 
-
-const child=father();
-
-
-///1000
-
-console.log(child(10));
-
-
-
-
-
-
 
 
 
