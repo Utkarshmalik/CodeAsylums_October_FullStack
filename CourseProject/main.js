@@ -158,7 +158,6 @@
 // }
 
 
-
 // //someday
 
 // const father=grandFather();
@@ -177,16 +176,149 @@
 // //CLOSURE -> is a box that contains all the variables of lexical enviroment
 
 
-for(let i=0;i<5;i++)
+// //concept : var vs let 
+
+// for(var i=0;i<5;i++)
+// {
+//     setTimeout(() => {
+//         console.log(i);
+//     }, 1000);    
+// }
+
+// for(let i=0;i<5;i++)
+// {
+//     setTimeout(() => {
+//         console.log(i);
+//     }, 1000);    
+// }
+
+//Promises
+
+//resolve is the function that runs after the asyncrous task is successful 
+//reject is the function we run after 
+
+// let promise1= new Promise((resolve,reject)=>
+// {
+//     console.log('Initial');
+
+//     reject();
+// });
+
+
+// promise1.then(()=>
+// {
+//     console.log("does something");
+// })
+// .catch(()=>
+// {
+//     console.log("some error ocuured");
+// })
+// .then(()=>
+// {
+//     console.log("Enter here everytime");
+// })
+
+
+
+// function callSomeAPI(url)
+// {
+//     const promise=fetch(url);
+
+//     promise.then((response)=>
+//     {
+//         if(response.status===200){
+//             console.log("API call successful");
+//             console.log(response.body);
+//         }
+
+//     })
+//     .catch((error)=>
+//     {
+//         console.log(error);
+//     })
+// }
+
+// callSomeAPI("https://dog.ceo/api/breeds/image/random");
+
+
+
+//userlogin 
+//fetch friends 
+//fetch comments
+
+
+
+
+
+// //async functions
+
+// function someFun()
+// {
+//     return new Promise((resolve,reject)=>
+//     {
+//         var someNumber= (Math.floor(Math.random()*100))%2;
+
+//         if(someNumber===0)
+//         {
+//             setTimeout(() => {
+//                 resolve("Number is even")
+//             }, 3000);
+//         }
+//         else{
+//             setTimeout(() => {
+//                 reject("Number is odd")
+//             }, 4000);
+//         }
+
+//     })
+// }
+
+// async function someAsyncFunction()
+// {
+//     const result=await someFun();
+//     console.log(result);
+// }
+
+// someAsyncFunction();
+
+
+
+// async function getData(url) {
+
+//     const response=await fetch(url);
+//     return response;
+// }
+
+// getData('https://jsonplaceholder.typicode.com/todos/1').then(data=>data.json())
+// .then(data=>console.log(data));
+
+
+
+// async function someFun() {
+
+//     return greeting=await Promise.resolve("hello");
+// }
+
+// someFun().then(alert);
+
+// someFun();
+
+
+function someFun()
 {
-    setTimeout(() => {
-        console.log(i);
-    }, 1000);    
+    return new Promise((res,reject)=>
+    {
+        setTimeout(() => {
+            res("data to be resolved ");
+        }, 2000);
+    })
 }
 
 
+async function asyncFun() {
 
+    const result=await someFun();
+    console.log(result);
+}
 
-
-
-
+asyncFun();

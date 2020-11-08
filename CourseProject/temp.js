@@ -50,6 +50,8 @@
 
 
 
+
+
 //event bubbling vs event capturing 
 //IIFE
 //Closures
