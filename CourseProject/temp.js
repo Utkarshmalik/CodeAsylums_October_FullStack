@@ -1,59 +1,49 @@
 
+ const usersList=document.querySelector("#users");
+ 
+ 
+ const user={name:"Utarsh"};
+
+ console.log(user);
+
+ const jsonUser=JSON.stringify(user);
+
+console.log(jsonUser);
+const newUser=JSON.parse(jsonUser);
+
+ console.log(newUser);
+ 
 
 
-// const button=document.querySelector("#formSubmitButton");
+async function  asyncFun(url)
+{
+    const users= await fetch(url,{headers:{"app-id":"5faaaa43b9885c692283f61f"}});
+    return users.json();
 
+}
 
-// const buttonHandler=(event)=>{
+asyncFun("https://dummyapi.io/data/api/user")
+.then(data=>
+    {
+        const users=data.data;
 
-//   event.preventDefault();
+        users.forEach(user => {
 
-//   const field=document.querySelector("#name");
-//   console.log(field.value);
+            console.log(user);
+            var newUser=document.createElement('ol');
+            newUser.innerHTML=` <div style="padding:10px;margin:10px;border:3px solid black;" >
+            <img src=${user.picture} height=100px width=100px />
+            <p>
+            The user is ${user.firstName} ${user.lastName} and my email id is ${user.email}
+            </p>
+            </div>
+            `
+            usersList.appendChild(newUser)
+    
+        });
 
-//   button.removeEventListener("click",buttonHandler);
-// }
-
-// // button.addEventListener("click",buttonHandler);
-
-
-// const box1=document.querySelector("#box1");
-// const box2=document.querySelector("#box2");
-// const box3=document.querySelector("#box3");
-
-
-
-
-// box1.addEventListener("click",(event)=>
-// {
-//   console.log("I am box 1");
-// },false);
-
-// box2.addEventListener("click",(event)=>
-// {
-//   event.stopImmediatePropagation();
-//   //event.stopPropagation();
-//   console.log("I am box 2");
-// },false);
-
-// box2.addEventListener("click",(event)=>
-// {
-//   console.log("I am box 2 version2");
-// },false);
-// box3.addEventListener("click",(event)=>
-// {
-//   console.log("I am box 3");
-// },false);
-
-//event Delegation 
-
+    }
+);
 
 
 
-
-
-//event bubbling vs event capturing 
-//IIFE
-//Closures
-//Asynchrounous JS : archtecture,callbacks,promises,async await 
-//HTTP Requests : 
