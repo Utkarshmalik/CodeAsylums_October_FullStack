@@ -1,4 +1,4 @@
-var divBody=document.querySelector("#divBody");
+var searchBox=document.querySelector("#searchBox");
 
 function apiCall(params) {
     
@@ -14,25 +14,20 @@ function apiCall(params) {
 
 var timerId;
 
-function throttleFunction(apiCallFun,delay) {
+function deBounceFunction(apiCallFun,delay) {
 
-    //no api call is made
+    clearTimeout(timerId);
 
-    if(timerId)
-    {
-        return;
-    }
 
      timerId = setTimeout(()=>
-    {
-        apiCallFun();
-        timerId=undefined;
+     {
+         apiCall();
 
-    },delay)
+     },delay)
 
 }
 
-window.addEventListener("scroll",function () {
+searchBox.addEventListener("input",function () {
 
     var apiCallCount=document.querySelector("#callCount");
 
@@ -45,8 +40,8 @@ window.addEventListener("scroll",function () {
     count=parseInt(count)+1;
     apiCallCount.innerHTML=count;
 
-    //throttle Function 
+    //deBounce Function 
 
-    throttleFunction(apiCall,2000);
+    deBounceFunction(apiCall,2000);
 
 },false)
