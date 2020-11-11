@@ -1,49 +1,44 @@
 
- const usersList=document.querySelector("#users");
+//  const usersList=document.querySelector("#users");
+
+//  ByteLengthQueuingStrategy.addEventListener("click",()=>
+//  {
+//      console.log("Button clicked");
+//  });
+
  
- 
- const user={name:"Utarsh"};
+//  const user={name:"Utarsh"};
+// async function  asyncFun(url)
+// {
+//     const users= await fetch(url, {body:JSON.stringify(user),method:"POST",headers:{"app-id":"5faaaa43b9885c692283f61f"}});
+//     return users.json();
+// }
 
- console.log(user);
+// asyncFun("https://dummyapi.io/data/api/user")
+// .then(data=>
+//     {
+//         const users=data.data;
 
- const jsonUser=JSON.stringify(user);
+//         users.forEach(user => {
 
-console.log(jsonUser);
-const newUser=JSON.parse(jsonUser);
+//             console.log(user);
+//             var newUser=document.createElement('ol');
+//             newUser.innerHTML=` <div style="padding:10px;margin:10px;border:3px solid black;" >
+//             <img src=${user.picture} height=100px width=100px />
+//             <p>
+//             The user is ${user.firstName} ${user.lastName} and my email id is ${user.email}
+//             </p>
+//             </div>
+//             `
+//             usersList.appendChild(newUser)
 
- console.log(newUser);
- 
+//         });
 
+//     }
+// );
 
-async function  asyncFun(url)
-{
-    const users= await fetch(url,{headers:{"app-id":"5faaaa43b9885c692283f61f"}});
-    return users.json();
+//Debouncing and Throatling 
 
-}
-
-asyncFun("https://dummyapi.io/data/api/user")
-.then(data=>
-    {
-        const users=data.data;
-
-        users.forEach(user => {
-
-            console.log(user);
-            var newUser=document.createElement('ol');
-            newUser.innerHTML=` <div style="padding:10px;margin:10px;border:3px solid black;" >
-            <img src=${user.picture} height=100px width=100px />
-            <p>
-            The user is ${user.firstName} ${user.lastName} and my email id is ${user.email}
-            </p>
-            </div>
-            `
-            usersList.appendChild(newUser)
-    
-        });
-
-    }
-);
 
 
 
