@@ -1,22 +1,13 @@
-import './App.css';
-import Component from './component1';
+import React, { Component } from 'react';
+import Component1 from './component1';
 import UserComp from './userComponent';
-
-/*
-    state and props
-*/
-
-
-/*
-state is a react object that holds a piece of data 
-*/
 
 
 class App extends Component {
 
-  constructor()
+  constructor(props)
   {
-    super();
+    super(props);
 
     this.state={
       users:[{name:"Utkarsh",age:34},{name:"Rahuk",age:34},{name:"rohan",age:34},{name:"Rohini",age:34}],
@@ -24,31 +15,34 @@ class App extends Component {
     }
   }
 
-   x="twgw";
+  onToggleLanguage()
+  {
+     this.setState({
+       language:(this.state.language==="English")?"Hindi":"English"   
+     });
+  }
 
   render()
   {
   return (
     <div  className="App">
       <header className="App-header">
-      <Component/>
+      <button onClick={ ()=>this.onToggleLanguage() } > Toggle Language </button>
+      <Component1/>
       <h1>
       {
         (this.state.language==="English")?"How are you ?":"Aap kaise ho ?"   
       }
-
+      
       {
-
         this.state.users.map((user)=>
         {
           return(
-           // UserComp(user);
            <UserComp  userDetails={user}  />
           )
         })
 
       }
-
 
       </h1>
         <p>

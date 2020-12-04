@@ -2,12 +2,10 @@ import React,{Component} from 'react';
 
 class Component1 extends Component
 {
-
     constructor()
     {
         super();
     }
-
 
     render()
     {
@@ -20,7 +18,6 @@ class Component1 extends Component
         )
 
     }
-
 }
 
 export default Component1;
