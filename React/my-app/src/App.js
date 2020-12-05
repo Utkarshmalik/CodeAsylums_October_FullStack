@@ -1,15 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
-import {Spinner} from 'react-bootstrap';
+import {Spinner,FormControl,InputGroup} from 'react-bootstrap';
 import Component1 from './component1';
 import UserComp from './userComponent';
 
-/*
 
-Lifecycle methods :
-
-*/
 
 class App extends Component {
 
@@ -22,13 +18,14 @@ class App extends Component {
     this.state={
       loading:true,
       users:[],
-      language:"Hindi"
+      allUsers:[],
+      inputText:""
     }
+
   }
 
   componentDidMount()
   {
-    //api call
 
     fetch('https://dummyapi.io/data/api/user',{
       headers:{
@@ -41,70 +38,59 @@ class App extends Component {
       this.setState(
         {
           loading:false,
-          users:users.data
+          users:users.data,
+          allUsers:users.data
         }
       )
     })
 
   }
 
-
-  onToggleLanguage()
+  renderLoaderOrUser()
   {
-     this.setState({
-       language:(this.state.language==="English")?"Hindi":"English"   
-     });
+
+    return(
+      (this.state.loading===true)?
+      (<Spinner style={{margin:"50px"}} size="lg" animation="border" role="status">
+      <span className="sr-only">Loading...</span>
+    </Spinner>):
+    (this.state.users.map((user)=>
+       {
+         return(
+          <UserComp  userDetails={user}  />
+         )
+       })
+      )
+    )
+  }
+
+  onInputChange(e)
+  {
+    const searchValue=e.target.value.toLowerCase();
+
+    const updatedUsers=this.state.allUsers.filter((user)=>
+    {
+      const fullName=user.firstName.toLowerCase()+" "+user.lastName.toLowerCase();
+
+      return fullName.startsWith(searchValue);
+    });
+
+    this.setState({users:updatedUsers});
   }
 
   render()
   {
 
-    console.log("render");
 
   return (
     <div  className="App">
-      <header className="App-header">
-      {
-      //  <button onClick={ ()=>this.onToggleLanguage() } > Toggle Language </button>
-      }
-      <Component1/>
-      <h1>
-      {
-        // (this.state.language==="English")?"How are you ?":"Aap kaise ho ?"   
-      }
+    <div>
 
+    <label>Search Employee: </label>
+    <input type="text" onChange={(e)=>this.onInputChange(e)}   / >
+    </div>
 
-      {
-
-         (this.state.loading===true)?
-         (<Spinner style={{margin:"50px"}} size="lg" animation="border" role="status">
-         <span className="sr-only">Loading...</span>
-       </Spinner>):
-       (this.state.users.map((user)=>
-          {
-            return(
-             <UserComp  userDetails={user}  />
-            )
-          })
-         )
-
-      }
-    
-
-      
-      </h1>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  {this.renderLoaderOrUser()}
     </div>
   );
   }
