@@ -5,27 +5,61 @@ import {Spinner,FormControl,InputGroup} from 'react-bootstrap';
 import Component1 from './component1';
 import UserComp from './userComponent';
 
+/*
 
+React is for making single page Applcaitons (SPA's)
+
+*/
 
 class App extends Component {
 
+
   constructor(props)
   {
+
     console.log("In constructor");
 
     super(props);
 
     this.state={
+      randomState:null,
       loading:true,
       users:[],
       allUsers:[],
       inputText:""
     }
-
   }
+
+  static getDerivedStateFromProps(props,state)
+  {
+    console.log("get derived state from props")
+
+    return {
+      randomState:props.someRandomValue
+    }
+  }
+
+  shouldComponentUpdate(nextProps,nextState)
+  {
+    return true;
+  }
+
+  componentDidUpdate(prevProps,prevState,snapshot)
+  {
+    console.log(prevState);
+
+    console.log("compo did update");
+  }
+
+  
 
   componentDidMount()
   {
+
+    // this.interval=setInterval(() => {
+      
+    // }, (interval));
+
 
     fetch('https://dummyapi.io/data/api/user',{
       headers:{
@@ -57,7 +91,7 @@ class App extends Component {
     (this.state.users.map((user)=>
        {
          return(
-          <UserComp  userDetails={user}  />
+          <UserComp key={user.id}  userDetails={user}  />
          )
        })
       )
@@ -80,12 +114,10 @@ class App extends Component {
 
   render()
   {
-
-
   return (
     <div  className="App">
     <div>
-
+    
     <label>Search Employee: </label>
     <input type="text" onChange={(e)=>this.onInputChange(e)}   / >
     </div>

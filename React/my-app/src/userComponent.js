@@ -1,9 +1,26 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Card,Button} from 'react-bootstrap';
 
-function userComponent(props) {
+class userComponent extends Component {
 
-    const {firstName,lastName,picture,email}=props.userDetails;
+  constructor(props)
+  {
+    super(props);
+  }
+
+  // const firstName=props.userDetails.firstName;
+  // const lastName=props.userDetails.lastName;
+
+
+  componentWillUnmount()
+  {
+    console.log("Component is unmounting");
+  }
+
+
+  render()
+  {
+    const {firstName,lastName,picture,email}=this.props.userDetails;
     return (
         <Card style={{ width:"18rem",color:"black",display:"inline-block",margin:"10px",border:"3px solid black" }}>
         <Card.Img variant="top" src={picture} />
@@ -17,6 +34,7 @@ function userComponent(props) {
         </Card.Body>
       </Card>   
     );
+  }
 }
 
 export default userComponent;
