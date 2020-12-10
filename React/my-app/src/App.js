@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 import {Spinner,FormControl,InputGroup} from 'react-bootstrap';
 import Component1 from './component1';
 import UserComp from './userComponent';
-
+import { v4 as uuidv4 } from 'uuid';
+import TaskComponent from './inCompleteTaskComponent';
+import CompletedComponent from './completedTaskComponent';
 /*
 
 React is for making single page Applcaitons (SPA's)
@@ -22,107 +24,144 @@ class App extends Component {
     super(props);
 
     this.state={
-      randomState:null,
-      loading:true,
-      users:[],
-      allUsers:[],
-      inputText:""
+      inputField:"",
+      inCompleteTasks:[],
+      CompletedTasks:[]
     }
   }
 
-  static getDerivedStateFromProps(props,state)
+  onEditModeChange({id,editMode},updatedValue,e)
   {
-    console.log("get derived state from props")
+    console.log(e);
+    e.stopPropagation();
 
-    return {
-      randomState:props.someRandomValue
-    }
-  }
+    console.log("dddfd");
 
-  shouldComponentUpdate(nextProps,nextState)
-  {
-    return true;
-  }
-
-  componentDidUpdate(prevProps,prevState,snapshot)
-  {
-    console.log(prevState);
-
-    console.log("compo did update");
-  }
-
-  
-
-  componentDidMount()
-  {
-
-    // this.interval=setInterval(() => {
-      
-    // }, (interval));
-
-
-    fetch('https://dummyapi.io/data/api/user',{
-      headers:{
-        "app-id":"5fca5a3236a334a6a8f40cc7"
-      }
-    })
-    .then(response => response.json())
-    .then(users=>{
-      console.log(users);
-      this.setState(
+    if(editMode)
+    {
+      var updatedTasks=this.state.inCompleteTasks.map((task)=>
+      {
+        if(task.id===id)
         {
-          loading:false,
-          users:users.data,
-          allUsers:users.data
+          const obj= {...task,editMode:false,data:updatedValue};
+          return obj;
         }
-      )
-    })
+        else
+        {
+          return task;
+        }
+      });
 
+      this.setState({inCompleteTasks:updatedTasks})
+    }
+
+    else
+    {
+    
+    var updatedTasks=this.state.inCompleteTasks.map((task)=>
+    {
+      if(task.id===id)
+      {
+        const obj= {...task,editMode:true};
+        return obj;
+      }
+      else
+      {
+        return task;
+      }
+    });
+
+    console.log(updatedTasks);
+
+    this.setState({inCompleteTasks:updatedTasks})
   }
-
-  renderLoaderOrUser()
-  {
-
-    return(
-      (this.state.loading===true)?
-      (<Spinner style={{margin:"50px"}} size="lg" animation="border" role="status">
-      <span className="sr-only">Loading...</span>
-    </Spinner>):
-    (this.state.users.map((user)=>
-       {
-         return(
-          <UserComp key={user.id}  userDetails={user}  />
-         )
-       })
-      )
-    )
-  }
+}
 
   onInputChange(e)
   {
-    const searchValue=e.target.value.toLowerCase();
+    this.setState({inputField:e.target.value});
+  }
 
-    const updatedUsers=this.state.allUsers.filter((user)=>
+  onAddTask()
+  {
+    const data=this.state.inputField;
+    const task={id:uuidv4(),data,editMode:false};
+
+
+    this.setState({
+      inputField:"",
+      inCompleteTasks:[...this.state.inCompleteTasks,task]
+    })
+  }
+
+  onDeleteTask({id},e)
+  {
+    if(e)
+    e.stopPropagation();
+
+    // console.log(this.state.inCompleteTasks);
+
+    var updatedTasks=this.state.inCompleteTasks.filter((task)=>
     {
-      const fullName=user.firstName.toLowerCase()+" "+user.lastName.toLowerCase();
-
-      return fullName.startsWith(searchValue);
+      return task.id!==id;
     });
 
-    this.setState({users:updatedUsers});
+    // console.log(updatedTasks);
+
+    this.setState({inCompleteTasks:updatedTasks}) 
   }
+
+  moveToCompleted(task)
+  {
+    this.onDeleteTask(task);
+    this.setState({CompletedTasks:[...this.state.CompletedTasks,task]});
+  }
+
+  displayIncompleteTasks()
+  {
+    console.log(this.state.inCompleteTasks);
+
+    return this.state.inCompleteTasks.map((task)=>
+    {
+       return <TaskComponent moveToCompleted={this.moveToCompleted.bind(this)} onDeleteTask={this.onDeleteTask.bind(this)}  onEditModeChange={this.onEditModeChange.bind(this)}  key={task.id} task={task} />
+    });
+  }
+
+  displayCompletedTasks()
+  {
+    console.log(this.state.inCompleteTasks);
+
+    return this.state.CompletedTasks.map((task)=>
+    {
+       return <CompletedComponent key={task.id} task={task} />
+    });
+  }
+
 
   render()
   {
   return (
     <div  className="App">
+    <h1>My TodoList App</h1>
+    <br/>
     <div>
-    
-    <label>Search Employee: </label>
-    <input type="text" onChange={(e)=>this.onInputChange(e)}   / >
+    <input type="text" value={this.state.inputField} onChange={(e)=>this.onInputChange(e)} ></input>
+    <button onClick={()=>{this.onAddTask()}} >Add Task</button>
+    </div>
+    <br/>
+    <div>
+    <h2>Todo Tasks</h2>
+    {this.displayIncompleteTasks()}
+    <br/>
+    </div>
+    <hr/>
+    <div>
+    <h2>Completed Tasks</h2>
+    {this.displayCompletedTasks()}
+    <br/>
     </div>
 
-  {this.renderLoaderOrUser()}
+    
     </div>
   );
   }
