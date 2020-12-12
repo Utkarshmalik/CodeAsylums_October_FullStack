@@ -7,14 +7,14 @@ import UserComp from './userComponent';
 import { v4 as uuidv4 } from 'uuid';
 import TaskComponent from './inCompleteTaskComponent';
 import CompletedComponent from './completedTaskComponent';
+import SpinnerComp from './Spinner';
+import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
+
 /*
-
 React is for making single page Applcaitons (SPA's)
-
 */
 
 class App extends Component {
-
 
   constructor(props)
   {
@@ -24,10 +24,29 @@ class App extends Component {
     super(props);
 
     this.state={
+      loading:true,
       inputField:"",
       inCompleteTasks:[],
       CompletedTasks:[]
     }
+  }
+
+
+  componentDidMount()
+  {
+    //is there anything in the local storage 
+
+    var data=localStorage.getItem('tasks');
+
+    if(data===null)
+    {
+      this.setState({loading:false});
+      return;
+    }
+
+     data=JSON.parse(data);
+     console.log(data);
+     this.setState({loading:false,inCompleteTasks:data});
   }
 
   onEditModeChange({id,editMode},updatedValue,e)
@@ -53,6 +72,10 @@ class App extends Component {
       });
 
       this.setState({inCompleteTasks:updatedTasks})
+
+
+      localStorage.setItem('tasks',JSON.stringify(updatedTasks));
+
     }
 
     else
@@ -74,6 +97,8 @@ class App extends Component {
     console.log(updatedTasks);
 
     this.setState({inCompleteTasks:updatedTasks})
+    localStorage.setItem('tasks',JSON.stringify(updatedTasks));
+
   }
 }
 
@@ -92,6 +117,9 @@ class App extends Component {
       inputField:"",
       inCompleteTasks:[...this.state.inCompleteTasks,task]
     })
+
+    localStorage.setItem('tasks',JSON.stringify([...this.state.inCompleteTasks,task]));
+
   }
 
   onDeleteTask({id},e)
@@ -109,6 +137,8 @@ class App extends Component {
     // console.log(updatedTasks);
 
     this.setState({inCompleteTasks:updatedTasks}) 
+    localStorage.setItem('tasks',JSON.stringify(updatedTasks));
+
   }
 
   moveToCompleted(task)
@@ -140,6 +170,7 @@ class App extends Component {
 
   render()
   {
+
   return (
     <div  className="App">
     <h1>My TodoList App</h1>
@@ -151,7 +182,11 @@ class App extends Component {
     <br/>
     <div>
     <h2>Todo Tasks</h2>
-    {this.displayIncompleteTasks()}
+
+    {
+      (this.state.loading)?<SpinnerComp/>: this.displayIncompleteTasks()
+    }
+
     <br/>
     </div>
     <hr/>
