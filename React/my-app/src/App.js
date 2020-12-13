@@ -1,204 +1,33 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
-import {Spinner,FormControl,InputGroup} from 'react-bootstrap';
-import Component1 from './component1';
-import UserComp from './userComponent';
-import { v4 as uuidv4 } from 'uuid';
-import TaskComponent from './inCompleteTaskComponent';
-import CompletedComponent from './completedTaskComponent';
-import SpinnerComp from './Spinner';
-import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
-
+import {Link,BrowserRouter as Router,Switch, Route} from 'react-router-dom';
+import Topics from './Topics';
 /*
 React is for making single page Applcaitons (SPA's)
 */
 
 class App extends Component {
 
+
   constructor(props)
   {
-
-    console.log("In constructor");
-
     super(props);
-
-    this.state={
-      loading:true,
-      inputField:"",
-      inCompleteTasks:[],
-      CompletedTasks:[]
-    }
   }
-
-
-  componentDidMount()
-  {
-    //is there anything in the local storage 
-
-    var data=localStorage.getItem('tasks');
-
-    if(data===null)
-    {
-      this.setState({loading:false});
-      return;
-    }
-
-     data=JSON.parse(data);
-     console.log(data);
-     this.setState({loading:false,inCompleteTasks:data});
-  }
-
-  onEditModeChange({id,editMode},updatedValue,e)
-  {
-    console.log(e);
-    e.stopPropagation();
-
-    console.log("dddfd");
-
-    if(editMode)
-    {
-      var updatedTasks=this.state.inCompleteTasks.map((task)=>
-      {
-        if(task.id===id)
-        {
-          const obj= {...task,editMode:false,data:updatedValue};
-          return obj;
-        }
-        else
-        {
-          return task;
-        }
-      });
-
-      this.setState({inCompleteTasks:updatedTasks})
-
-
-      localStorage.setItem('tasks',JSON.stringify(updatedTasks));
-
-    }
-
-    else
-    {
-    
-    var updatedTasks=this.state.inCompleteTasks.map((task)=>
-    {
-      if(task.id===id)
-      {
-        const obj= {...task,editMode:true};
-        return obj;
-      }
-      else
-      {
-        return task;
-      }
-    });
-
-    console.log(updatedTasks);
-
-    this.setState({inCompleteTasks:updatedTasks})
-    localStorage.setItem('tasks',JSON.stringify(updatedTasks));
-
-  }
-}
-
-  onInputChange(e)
-  {
-    this.setState({inputField:e.target.value});
-  }
-
-  onAddTask()
-  {
-    const data=this.state.inputField;
-    const task={id:uuidv4(),data,editMode:false};
-
-
-    this.setState({
-      inputField:"",
-      inCompleteTasks:[...this.state.inCompleteTasks,task]
-    })
-
-    localStorage.setItem('tasks',JSON.stringify([...this.state.inCompleteTasks,task]));
-
-  }
-
-  onDeleteTask({id},e)
-  {
-    if(e)
-    e.stopPropagation();
-
-    // console.log(this.state.inCompleteTasks);
-
-    var updatedTasks=this.state.inCompleteTasks.filter((task)=>
-    {
-      return task.id!==id;
-    });
-
-    // console.log(updatedTasks);
-
-    this.setState({inCompleteTasks:updatedTasks}) 
-    localStorage.setItem('tasks',JSON.stringify(updatedTasks));
-
-  }
-
-  moveToCompleted(task)
-  {
-    this.onDeleteTask(task);
-    this.setState({CompletedTasks:[...this.state.CompletedTasks,task]});
-  }
-
-  displayIncompleteTasks()
-  {
-    console.log(this.state.inCompleteTasks);
-
-    return this.state.inCompleteTasks.map((task)=>
-    {
-       return <TaskComponent moveToCompleted={this.moveToCompleted.bind(this)} onDeleteTask={this.onDeleteTask.bind(this)}  onEditModeChange={this.onEditModeChange.bind(this)}  key={task.id} task={task} />
-    });
-  }
-
-  displayCompletedTasks()
-  {
-    console.log(this.state.inCompleteTasks);
-
-    return this.state.CompletedTasks.map((task)=>
-    {
-       return <CompletedComponent key={task.id} task={task} />
-    });
-  }
-
 
   render()
   {
+    return(
+      <Router>
+      <ul>
+      <li> <Link to='/'> Home </Link> </li>
+      <li> <Link to='/topics'> Topics </Link> </li>
+      </ul>
+      <Route exact path='/'></Route>
+      <Route path='/topics' component={Topics} /> 
+    </Router>
 
-  return (
-    <div  className="App">
-    <h1>My TodoList App</h1>
-    <br/>
-    <div>
-    <input type="text" value={this.state.inputField} onChange={(e)=>this.onInputChange(e)} ></input>
-    <button onClick={()=>{this.onAddTask()}} >Add Task</button>
-    </div>
-    <br/>
-    <div>
-    <h2>Todo Tasks</h2>
-
-    {
-      (this.state.loading)?<SpinnerComp/>: this.displayIncompleteTasks()
-    }
-
-    <br/>
-    </div>
-    <hr/>
-    <div>
-    <h2>Completed Tasks</h2>
-    {this.displayCompletedTasks()}
-    <br/>
-    </div>
-
-    
-    </div>
-  );
+    )
   }
 }
 
