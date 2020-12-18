@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import {Link,BrowserRouter as Router,Switch, Route} from 'react-router-dom';
 import Topics from './Topics';
+import Information from './Contact';
+import LanguageContextProvider from './Contexts/LanguageContext';
+import Navbar from './Navbar';
 /*
 React is for making single page Applcaitons (SPA's)
 */
@@ -18,15 +21,13 @@ class App extends Component {
   render()
   {
     return(
-      <Router>
-      <ul>
-      <li> <Link to='/'> Home </Link> </li>
-      <li> <Link to='/topics'> Topics </Link> </li>
-      </ul>
-      <Route exact path='/'></Route>
-      <Route path='/topics' component={Topics} /> 
-    </Router>
-
+      <LanguageContextProvider>
+      <Navbar/>
+      <div>
+      <h1> Context API's in action </h1>
+      </div>
+      <Information/>
+      </LanguageContextProvider>
     )
   }
 }
